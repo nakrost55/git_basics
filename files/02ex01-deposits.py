@@ -41,12 +41,25 @@ USAGE = """USAGE: {script} initial_sum percent fixed_period set_period
 """
 USAGE = USAGE.strip()
 
+MONTH = 30
+YEAR = 365
+FIVE_YEAR = 1826
+TEN_YEAR = 3652
+
 
 def deposit(initial_sum, percent, fixed_period, set_period):
+
     """Calculate deposit yield."""
-    per = percent / 100
-    growth = (1 + per) ** (set_period / fixed_period)
-    return initial_sum * growth
+    percent = 1 + (percent / 100) 
+    periods = [set_period, 30, 365,1826,3652]
+    deposits = [] 
+    for period in  periods:
+        
+        growth = percent  **  (period/fixed_period)
+        deposits += growth * initial_sum
+    return deposits
+
+    
 
 
 def main(args):
@@ -63,7 +76,10 @@ def main(args):
     # ...
 
     res = deposit(initial_sum, percent, fixed_period, set_period)
-    print(res)
+    time = ["your period","one month", "ONE YEAR","FIVE YEARS","TEN YEARS"]
+    for i in range (res):
+    
+        print (time[i]+ ": "+ res[i])
 
 
 if __name__ == '__main__':
