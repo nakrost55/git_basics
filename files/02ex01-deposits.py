@@ -62,6 +62,7 @@ def deposit(initial_sum, percent, fixed_period, set_period):
     
 
 
+
 def main(args):
     """Gets called when run as a script."""
     if len(args) != 4 + 1:
